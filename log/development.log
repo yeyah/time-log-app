@@ -1,0 +1,1073 @@
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddDayToTimeEntries (20150527033110)
+  [1m[35m (833.2ms)[0m  ALTER TABLE `time_entries` ADD `day` varchar(255)
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20150527033110')
+  [1m[36m (40.0ms)[0m  [1mCOMMIT[0m
+Migrating to RemoveDayFromTimeEntries (20150527053745)
+  [1m[35m (602.9ms)[0m  ALTER TABLE `time_entries` DROP `day`
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20150527053745')
+  [1m[36m (46.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'time-log'
+  AND fk.table_name = 'companies'
+[0m
+  [1m[35m (4.0ms)[0m  SHOW CREATE TABLE `companies`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'time-log'
+  AND fk.table_name = 'company_users'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `company_users`
+  [1m[36m (4.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'time-log'
+  AND fk.table_name = 'time_entries'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `time_entries`
+  [1m[36m (0.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'time-log'
+  AND fk.table_name = 'user_settings'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `user_settings`
+  [1m[36m (4.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'time-log'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.0ms)[0m  SHOW CREATE TABLE `users`
+
+
+Started GET "/" for ::1 at 2015-06-02 10:26:13 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2[0m
+  Rendered users/index.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 8719ms (Views: 8570.8ms | ActiveRecord: 20.0ms)
+
+
+Started GET "/assets/scaffolds.self-1512985fd3d7fdc87008e8a802fe8c2535ea547f1befe42fe5572dfcd41868f3.css?body=1" for ::1 at 2015-06-02 10:26:22 +0800
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 10:26:26 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6VLpG5stUTuXwIVE9nsVGqNdb8peEvqie/fzoL2Pk+XHh+iAmxcFsbX0ppLRe0BrwA1oJfXFNHEyXRYJti5OxQ=="}
+  [1m[35mUser Load (4.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 2  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 64ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:26:26 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 304ms (Views: 272.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 10:30:23 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (378.2ms)
+Completed 200 OK in 790ms (Views: 612.6ms | ActiveRecord: 55.2ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:30:41 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ToEvHwuCh/aTBuANFfVq7I42jvy1DR7yeuc1UXTx0PBJQMI/DPZOM1w4U+9WO0OIWrJM3nhbglKEawZNBMFVRA==", "user"=>{"first_name"=>"wer", "last_name"=>"rtyu", "date_of_birth"=>"0005-05-05", "email"=>"11@11.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"rtyu", "domain"=>"fghj"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` = 'fghj' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '11@11.com' LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('11@11.com', '$2a$10$vrl7LZS7U0kG4OaaVs4SZujtNyMwygvkpU1pvwfHfP3Y5dJYrk4.2', 'wer', 'rtyu', '0005-05-05', '2015-06-02 02:30:42.045706', '2015-06-02 02:30:42.045706')[0m
+  [1m[35mSQL (4.0ms)[0m  INSERT INTO `companies` (`name`, `domain`) VALUES ('rtyu', 'fghj')
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO `company_users` (`company_id`) VALUES (3)[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `company_users` (`access_level`, `first_name`, `last_name`, `user_id`) VALUES (1, 'wer', 'rtyu', 3)
+  [1m[36mSQL (4.0ms)[0m  [1mUPDATE `company_users` SET `user_id` = 3 WHERE `company_users`.`id` = 4[0m
+  [1m[35m (44.1ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.0ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-06-02 02:30:42.137718', `current_sign_in_at` = '2015-06-02 02:30:42.137718', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 02:30:42.145712' WHERE `users`.`id` = 3
+  [1m[36m (52.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 556ms (ActiveRecord: 112.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:30:42 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3[0m
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 248ms (Views: 240.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 10:35:39 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fWTWkuIY4ogl+3dJpi83GnjIt6ca7ECGbanNa0mJZbt6pTuy5WwrTerFxKvl4R5+rEx1hde63CaTJf53ObngDw=="}
+  [1m[35mUser Load (4.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 3  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms (ActiveRecord: 32.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:35:39 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 260ms (Views: 252.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 10:35:41 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 419ms (Views: 309.7ms | ActiveRecord: 46.9ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:36:01 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lMQM/bcQCPtxW//BQRX5e/LWqRtbMiFKsskyN3OReYumRwbZrJ57qZo2x7DKPKTbe+QSb0VbMmM5YaJfWLuQkw==", "user"=>{"first_name"=>"poiuy", "last_name"=>"poiu", "date_of_birth"=>"1212-02-01", "email"=>"12@12.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"ppp", "domain"=>"ppp"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (4.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (4.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '12@12.com' LIMIT 1
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('12@12.com', '$2a$10$gTzfzwZz5J/kmnKZHaaXkOKoE.h7Cp9K7vdMlEiIpP8cbxKoPZMoS', 'poiuy', 'poiu', '1212-02-01', '2015-06-02 02:36:01.922388', '2015-06-02 02:36:01.922388')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `companies` (`name`, `domain`) VALUES ('ppp', 'ppp')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`user_id`, `company_id`) VALUES (4, 4)[0m
+  [1m[35m (36.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `company_users` (`access_level`, `company_id`, `first_name`, `last_name`, `user_id`) VALUES (1, 1, 'poiuy', 'poiu', 4)
+  [1m[36m (64.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2015-06-02 02:36:02.074371', `current_sign_in_at` = '2015-06-02 02:36:02.074371', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 02:36:02.078378' WHERE `users`.`id` = 4[0m
+  [1m[35m (52.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 556ms (ActiveRecord: 164.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:36:02 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 232ms (Views: 220.0ms | ActiveRecord: 4.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 10:38:37 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"iamTeCGlzoJ5he4S7TMoXmbjzy6SH9DWvINvB7vQfla7KplcOiu90JLo1mNmGnX+79F0Wox2w/83K/9vkPqXTg=="}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 4  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (4.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms (ActiveRecord: 28.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:38:38 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT `users`.* FROM `users`
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 264ms (Views: 264.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 10:38:40 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (8.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (55.7ms)
+Completed 200 OK in 437ms (Views: 349.7ms | ActiveRecord: 43.3ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:39:07 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sOHHl6GV8gIDx+GQHji5/Dt+kQz41AaMMvsF7kbF9ElK/e/fdDWRtTafos13pxNrdeFmJxl01k+yTzDMz6T21w==", "user"=>{"first_name"=>"ased", "last_name"=>"sdfg", "date_of_birth"=>"0046-02-05", "email"=>"13@13.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"ooo", "domain"=>"ooo"}}}, "commit"=>"Sign up"}
+  [1m[36mCompany Load (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '13@13.com' LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('13@13.com', '$2a$10$N3j5NzN4Ovt7Yu8fW/oZIOW/Lq9K0QU5SQhfqZ89Di78D8MlQ9nLm', 'ased', 'sdfg', '0046-02-05', '2015-06-02 02:39:07.786070', '2015-06-02 02:39:07.786070')
+  [1m[36mSQL (12.1ms)[0m  [1mINSERT INTO `companies` (`name`, `domain`) VALUES ('ooo', 'ooo')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `company_users` (`user_id`, `company_id`) VALUES (5, 5)
+  [1m[36m (36.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (4.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`access_level`, `company_id`, `first_name`, `last_name`, `user_id`) VALUES (1, 1, 'ased', 'sdfg', 5)[0m
+  [1m[35m (68.1ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.0ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-06-02 02:39:08.058081', `current_sign_in_at` = '2015-06-02 02:39:08.058081', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 02:39:08.066078' WHERE `users`.`id` = 5
+  [1m[36m (52.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 688ms (ActiveRecord: 272.2ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:39:08 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 5  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 5[0m
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 236ms (Views: 228.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 10:39:53 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ZF5DxjClL5YUsVt1Xr8lhJJaXFIIAorEXGPHdee3CtueQmuO5QVMISHpGCg3II8T3MWreemiWgfc1/JXbtYIRQ=="}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 5  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms (ActiveRecord: 20.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:39:53 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 268ms (Views: 264.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 10:39:56 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 435ms (Views: 340.9ms | ActiveRecord: 31.2ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:40:12 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nWCx8XSNnKMXTF1HxUD8x9x6+TqUHeb8thtVDeODJfCbkJ8i86i+ajO7+AG+qhDJnOWmoeEiNnoeL/ueVRCT/Q==", "user"=>{"first_name"=>"14", "last_name"=>"14", "date_of_birth"=>"0002-11-21", "email"=>"14@14.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"ii", "domain"=>"ii"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (4.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (4.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '14@14.com' LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('14@14.com', '$2a$10$0dFhfdJy1D4wdBwoMc3ZeuPFfTnvADT4eLRefpaO/X6MBfn/gmnfS', '14', '14', '0002-11-21', '2015-06-02 02:40:13.213109', '2015-06-02 02:40:13.213109')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `companies` (`name`, `domain`) VALUES ('ii', 'ii')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`user_id`, `company_id`) VALUES (6, 6)[0m
+  [1m[35m (104.1ms)[0m  COMMIT
+  [1m[36mCompany Load (28.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` INNER JOIN `company_users` ON `companies`.`id` = `company_users`.`company_id` WHERE `company_users`.`user_id` = 6  ORDER BY `companies`.`id` ASC LIMIT 1[0m
+  [1m[35m (4.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`access_level`, `company_id`, `first_name`, `last_name`, `user_id`) VALUES (1, 1, '14', '14', 6)[0m
+  [1m[35m (36.1ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.0ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-06-02 02:40:13.449128', `current_sign_in_at` = '2015-06-02 02:40:13.449128', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 02:40:13.453130' WHERE `users`.`id` = 6
+  [1m[36m (40.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 648ms (ActiveRecord: 224.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:40:13 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (4.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 6  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 240ms (Views: 236.0ms | ActiveRecord: 4.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 10:42:09 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"AHsRx8DqZ+fbehEYCMa+72DucWZDg+OTUPcp3tNed3UGiz8UR89FLv+NtF5zLFLhIHEu/Ta8MxX4w4dNZc3BeA=="}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 6  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 164ms (ActiveRecord: 20.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:42:10 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 885ms (Views: 861.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 10:42:12 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (15.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (333.7ms)
+Completed 200 OK in 750ms (Views: 593.3ms | ActiveRecord: 46.9ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:42:26 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WHZu1BV2Thc+jWTonBYD2J0uh5zD17EiOeVDycOFXZ7jY/0IPcDdfVuLYc/fdKoilC0iWr8BGDEdosF+K3r6ug==", "user"=>{"first_name"=>"15", "last_name"=>"15", "date_of_birth"=>"0031-11-21", "email"=>"15@15.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"uu", "domain"=>"uu"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (4.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '15@15.com' LIMIT 1
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('15@15.com', '$2a$10$jRRqiIM45O1vAMCZmrTTl.kjNVAB55ESbbVcIV8pr1MMA9yTSnVwi', '15', '15', '0031-11-21', '2015-06-02 02:42:26.454991', '2015-06-02 02:42:26.454991')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `companies` (`name`, `domain`) VALUES ('uu', 'uu')
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO `company_users` (`user_id`, `company_id`) VALUES (7, 7)[0m
+  [1m[35m (116.0ms)[0m  COMMIT
+  [1m[36mCompany Load (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` INNER JOIN `company_users` ON `companies`.`id` = `company_users`.`company_id` WHERE `company_users`.`user_id` = 7  ORDER BY `companies`.`id` ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `companies`.* FROM `companies` INNER JOIN `company_users` ON `companies`.`id` = `company_users`.`company_id` WHERE `company_users`.`user_id` = 7  ORDER BY `companies`.`id` ASC LIMIT 1  [["user_id", 7]]
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `company_users` (`access_level`, `company_id`, `first_name`, `last_name`, `user_id`) VALUES (1, 7, '15', '15', 7)
+  [1m[36m (36.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (4.0ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2015-06-02 02:42:26.754984', `current_sign_in_at` = '2015-06-02 02:42:26.754984', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 02:42:26.758987' WHERE `users`.`id` = 7[0m
+  [1m[35m (48.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 736ms (ActiveRecord: 288.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:42:26 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 7
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 240ms (Views: 232.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 10:49:13 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"NuTSrZcxA4FhBaEcRSQHiKJJFYl6cKHbDk4YxOA0QlGN8UFxv4eQ6wQDpDsGRq5yq0qwTwamCMgqCZpzCMvldQ=="}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 7  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 104ms (ActiveRecord: 24.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:49:13 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT `users`.* FROM `users`
+  Rendered users/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 252ms (Views: 252.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 10:49:15 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (15.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 375ms (Views: 296.9ms | ActiveRecord: 31.2ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:49:30 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TuFrwP9ZILLr9VOPRFZkHO2eofXoUjEOrkN0Od9Io6nZjlQa1T0zyRk23tiO5qt3VrEktg/toBnGBKWigMsTpA==", "user"=>{"first_name"=>"16", "last_name"=>"16", "date_of_birth"=>"0012-12-12", "email"=>"16@16.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"yy", "domain"=>"yy"}}}, "commit"=>"Sign up"}
+  [1m[36mCompany Load (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '16@16.com' LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('16@16.com', '$2a$10$2US7NChsXCGWV4/sPmacle.9zsUSJgv7voC3oLKsoXx/pFRSM3GH.', '16', '16', '0012-12-12', '2015-06-02 02:49:30.733572', '2015-06-02 02:49:30.733572')
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO `companies` (`name`, `domain`) VALUES ('yy', 'yy')[0m
+  [1m[35mSQL (4.0ms)[0m  INSERT INTO `company_users` (`user_id`, `company_id`) VALUES (8, 8)
+  [1m[36m (48.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mCompany Load (4.0ms)[0m  SELECT  `companies`.* FROM `companies` INNER JOIN `company_users` ON `companies`.`id` = `company_users`.`company_id` WHERE `company_users`.`user_id` = 8  ORDER BY `companies`.`id` ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` INNER JOIN `company_users` ON `companies`.`id` = `company_users`.`company_id` WHERE `company_users`.`user_id` = 8  ORDER BY `companies`.`id` ASC LIMIT 1[0m  [["user_id", 8]]
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`access_level`, `company_id`, `first_name`, `last_name`, `user_id`) VALUES (1, 8, '16', '16', 8)[0m
+  [1m[35m (40.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.0ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-06-02 02:49:30.881582', `current_sign_in_at` = '2015-06-02 02:49:30.881582', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 02:49:30.885607' WHERE `users`.`id` = 8
+  [1m[36m (40.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 544ms (ActiveRecord: 144.2ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:49:30 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 8  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 8[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 264ms (Views: 256.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 10:50:12 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"GSBJ2NLx9Ikt2zdPPjhMyaDRgbQ8Z7v+ocVAFvaJvmyOT3YC+JXn8t8Yuhj0iIOiG/4E99vYKunJgpGNqQoOYQ=="}
+  [1m[35mUser Load (4.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 8  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 24ms (ActiveRecord: 12.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:50:12 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 76ms (Views: 76.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 10:50:14 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 158ms (Views: 134.2ms | ActiveRecord: 15.6ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:50:32 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"K3wswCXfwwTysTKaC2RrViJHukzm5DNRkSxwrtPxiaj1lTV8gbrgBNhq4BtclNW4cbdw70gq4vqfJt3ButPC+w==", "user"=>{"first_name"=>"17", "last_name"=>"17", "date_of_birth"=>"0003-12-31", "email"=>"17@17.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"mm", "domain"=>"mm"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '17@17.com' LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('17@17.com', '$2a$10$RAlBS3eb3w4gAxn0mDnmfO8FfrZQ1YUCmyd4N/8iZbRm8nDwyA1hy', '17', '17', '0003-12-31', '2015-06-02 02:50:32.498342', '2015-06-02 02:50:32.498342')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `companies` (`name`, `domain`) VALUES ('mm', 'mm')
+  [1m[36mSQL (4.0ms)[0m  [1mINSERT INTO `company_users` (`user_id`, `company_id`) VALUES (9, 9)[0m
+  [1m[35m (60.1ms)[0m  COMMIT
+  [1m[36mCompany Load (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` INNER JOIN `company_users` ON `companies`.`id` = `company_users`.`company_id` WHERE `company_users`.`user_id` = 9  ORDER BY `companies`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2015-06-02 02:50:32.670352', `current_sign_in_at` = '2015-06-02 02:50:32.670352', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 02:50:32.674352' WHERE `users`.`id` = 9[0m
+  [1m[35m (44.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 580ms (ActiveRecord: 180.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:50:32 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 9  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 9
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 236ms (Views: 228.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 10:51:49 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JPKgIcVIa97NYeA4ZTiYvhgWwzdEeWkGZdiYuqQwF5H6G7mdYS1I3ue6MrkyyCZQS+YJlOq3uK1r0jXVzRJcwg=="}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 9  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms (ActiveRecord: 20.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:51:49 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT `users`.* FROM `users`
+  Rendered users/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 240ms (Views: 236.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 10:51:52 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 375ms (Views: 296.9ms | ActiveRecord: 31.2ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:52:04 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7A5OR0z4USzax1fsA+yH8eR1T99YQoa9MLUjkpl0KZ6YozBx7CsoWt5di3u1ND54NzeCrD+oPEUGmWkffP5MNg==", "user"=>{"first_name"=>"18", "last_name"=>"18", "date_of_birth"=>"0321-12-31", "email"=>"18@18.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"nn", "domain"=>"nn"}}}, "commit"=>"Sign up"}
+  [1m[36mCompany Load (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '18@18.com' LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('18@18.com', '$2a$10$b4m596m.KMf.fFomQvrG9.nzyNImMZ1eVBQvfhXzQmqvEXnBpt.LG', '18', '18', '0321-12-31', '2015-06-02 02:52:05.221087', '2015-06-02 02:52:05.221087')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `companies` (`name`, `domain`) VALUES ('nn', 'nn')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `company_users` (`company_id`) VALUES (10)
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`access_level`, `first_name`, `last_name`, `user_id`) VALUES (1, '18', '18', 10)[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE `company_users` SET `user_id` = 10 WHERE `company_users`.`id` = 17
+  [1m[36m (56.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (4.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2015-06-02 02:52:05.309094', `current_sign_in_at` = '2015-06-02 02:52:05.309094', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 02:52:05.313075' WHERE `users`.`id` = 10[0m
+  [1m[35m (44.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 496ms (ActiveRecord: 104.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:52:05 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 10  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 10
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 264ms (Views: 260.0ms | ActiveRecord: 4.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 10:54:01 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"aCca3DweFz/PPUIbPGaPe6xIL9dSn6vGGPml/PlDcYMcimTqnM1uScunnoyKvjbyfwripDV1ET4u1e9xHMkUKw=="}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 10  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms (ActiveRecord: 20.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 10:54:01 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (4.0ms)[0m  SELECT `users`.* FROM `users`
+  Rendered users/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 260ms (Views: 252.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 10:54:03 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (15.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (46.8ms)
+Completed 200 OK in 400ms (Views: 321.7ms | ActiveRecord: 46.9ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:54:14 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MBsvFUIew6xYhY33mxxeQr56SLUy5xfFs042DjcjYWGParMUv0k2MiXq4ENek6BfGZ+JMXoYMzOkneeT0opyUw==", "user"=>{"first_name"=>"19", "last_name"=>"19", "date_of_birth"=>"", "email"=>"19@19.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"bb", "domain"=>"bb"}}}, "commit"=>"Sign up"}
+  [1m[36mCompany Load (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 308ms
+
+NoMethodError (undefined method `access_level=' for #<ActiveRecord::Associations::CollectionProxy []>):
+  app/controllers/registrations_controller.rb:16:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (100.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (100.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (216.0ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:55:06 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MBsvFUIew6xYhY33mxxeQr56SLUy5xfFs042DjcjYWGParMUv0k2MiXq4ENek6BfGZ+JMXoYMzOkneeT0opyUw==", "user"=>{"first_name"=>"19", "last_name"=>"19", "date_of_birth"=>"", "email"=>"19@19.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"bb", "domain"=>"bb"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+Completed 500 Internal Server Error in 428ms
+
+NoMethodError (undefined method `access_level=' for nil:NilClass):
+  app/controllers/registrations_controller.rb:16:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (112.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (104.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (224.0ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 10:55:59 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MBsvFUIew6xYhY33mxxeQr56SLUy5xfFs042DjcjYWGParMUv0k2MiXq4ENek6BfGZ+JMXoYMzOkneeT0opyUw==", "user"=>{"first_name"=>"19", "last_name"=>"19", "date_of_birth"=>"", "email"=>"19@19.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"bb", "domain"=>"bb"}}}, "commit"=>"Sign up"}
+  [1m[36mCompany Load (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 460ms
+
+NoMethodError (undefined method `access_level=' for nil:NilClass):
+  app/controllers/registrations_controller.rb:19:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (100.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (104.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (224.0ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:01:13 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MBsvFUIew6xYhY33mxxeQr56SLUy5xfFs042DjcjYWGParMUv0k2MiXq4ENek6BfGZ+JMXoYMzOkneeT0opyUw==", "user"=>{"first_name"=>"19", "last_name"=>"19", "date_of_birth"=>"", "email"=>"19@19.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"bb", "domain"=>"bb"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+Completed 500 Internal Server Error in 448ms
+
+NoMethodError (undefined method `access_level=' for nil:NilClass):
+  app/controllers/registrations_controller.rb:19:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (104.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (92.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (208.0ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:01:40 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MBsvFUIew6xYhY33mxxeQr56SLUy5xfFs042DjcjYWGParMUv0k2MiXq4ENek6BfGZ+JMXoYMzOkneeT0opyUw==", "user"=>{"first_name"=>"19", "last_name"=>"19", "date_of_birth"=>"", "email"=>"19@19.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"bb", "domain"=>"bb"}}}, "commit"=>"Sign up"}
+  [1m[36mCompany Load (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 140ms
+
+NoMethodError (undefined method `access_level=' for nil:NilClass):
+  app/controllers/registrations_controller.rb:19:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (28.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (64.0ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:02:34 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MBsvFUIew6xYhY33mxxeQr56SLUy5xfFs042DjcjYWGParMUv0k2MiXq4ENek6BfGZ+JMXoYMzOkneeT0opyUw==", "user"=>{"first_name"=>"19", "last_name"=>"19", "date_of_birth"=>"", "email"=>"19@19.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"bb", "domain"=>"bb"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+Completed 500 Internal Server Error in 484ms
+
+NoMethodError (undefined method `company_users' for #<Company::ActiveRecord_Associations_CollectionProxy:0x9767b68>):
+  app/controllers/registrations_controller.rb:17:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (104.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (100.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (216.0ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:03:51 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MBsvFUIew6xYhY33mxxeQr56SLUy5xfFs042DjcjYWGParMUv0k2MiXq4ENek6BfGZ+JMXoYMzOkneeT0opyUw==", "user"=>{"first_name"=>"19", "last_name"=>"19", "date_of_birth"=>"", "email"=>"19@19.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"bb", "domain"=>"bb"}}}, "commit"=>"Sign up"}
+  [1m[36mCompany Load (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '19@19.com' LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `created_at`, `updated_at`) VALUES ('19@19.com', '$2a$10$H6iaMVzYN5OgvVtoRy9l5OBWONHe7T9pb0XbgBia.FC4K0zQ7t2F.', '19', '19', '2015-06-02 03:03:52.146732', '2015-06-02 03:03:52.146732')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `companies` (`name`, `domain`) VALUES ('bb', 'bb')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `company_users` (`company_id`) VALUES (11)
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`access_level`, `first_name`, `last_name`, `user_id`) VALUES (1, '19', '19', 11)[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE `company_users` SET `user_id` = 11 WHERE `company_users`.`id` = 19
+  [1m[36m (104.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (4.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2015-06-02 03:03:52.282742', `current_sign_in_at` = '2015-06-02 03:03:52.282742', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 03:03:52.286742' WHERE `users`.`id` = 11[0m
+  [1m[35m (52.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 696ms (ActiveRecord: 228.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:03:52 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 11
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 292ms (Views: 280.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/scaffolds.self-1512985fd3d7fdc87008e8a802fe8c2535ea547f1befe42fe5572dfcd41868f3.css?body=1" for ::1 at 2015-06-02 11:03:52 +0800
+
+
+Started GET "/assets/time_entries.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-02 11:03:52 +0800
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-02 11:03:52 +0800
+
+
+Started GET "/assets/user_settings.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-02 11:03:52 +0800
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-02 11:03:52 +0800
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-06-02 11:03:53 +0800
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-02 11:03:53 +0800
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-02 11:03:53 +0800
+
+
+Started GET "/assets/time_entries.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-02 11:03:53 +0800
+
+
+Started GET "/assets/user_settings.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-02 11:03:53 +0800
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-02 11:03:53 +0800
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-02 11:03:53 +0800
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 11:08:51 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BL+9u0lD/83/XBq6CI7ro2dIr8Ox3GpIkTBW6bjh0627ziG6tBQKU4Izdw7NARW+wK1uR/kjTr6G44d0XUjAnw=="}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 11  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36m (0.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms (ActiveRecord: 28.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:08:52 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (4.0ms)[0m  SELECT `users`.* FROM `users`
+  Rendered users/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 244ms (Views: 236.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 11:08:54 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 415ms (Views: 336.6ms | ActiveRecord: 31.2ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:09:24 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0xZnv1P79GZQAq2V2mxTYRxG5ncW3o4cZOYAtM5TUFqHai1WWVc+TQErRAUAYB7t+ngi6i8LVmbhldeiEV5wwg==", "user"=>{"first_name"=>"20", "last_name"=>"20", "date_of_birth"=>"0032-12-12", "email"=>"20@20.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"bbv", "domain"=>"bbv"}}}, "commit"=>"Sign up"}
+  [1m[36mCompany Load (0.0ms)[0m  [1mSELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1[0m
+Completed 500 Internal Server Error in 320ms
+
+ActiveRecord::AssociationTypeMismatch (Company(#74793708) expected, got Company::ActiveRecord_Associations_CollectionProxy(#74750916)):
+  app/controllers/registrations_controller.rb:19:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (96.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (108.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (220.0ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:13:22 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0xZnv1P79GZQAq2V2mxTYRxG5ncW3o4cZOYAtM5TUFqHai1WWVc+TQErRAUAYB7t+ngi6i8LVmbhldeiEV5wwg==", "user"=>{"first_name"=>"20", "last_name"=>"20", "date_of_birth"=>"0032-12-12", "email"=>"20@20.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"bbv", "domain"=>"bbv"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+  [1m[36m (4.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '20@20.com' LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('20@20.com', '$2a$10$9uWYQlL3ODDb4q8nPOu.2uH1iAAHbS49QwRsPyPnsRpe.YopmYsQC', '20', '20', '0032-12-12', '2015-06-02 03:13:23.285241', '2015-06-02 03:13:23.285241')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `companies` (`name`, `domain`) VALUES ('bbv', 'bbv')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`company_id`) VALUES (12)[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `company_users` (`access_level`, `first_name`, `last_name`, `user_id`, `company_id`) VALUES (1, '20', '20', 12, 12)
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE `company_users` SET `user_id` = 12 WHERE `company_users`.`id` = 21[0m
+  [1m[35m (100.1ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-06-02 03:13:23.417278', `current_sign_in_at` = '2015-06-02 03:13:23.417278', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 03:13:23.421264' WHERE `users`.`id` = 12
+  [1m[36m (52.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 700ms (ActiveRecord: 216.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:13:23 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 12  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 12[0m
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 292ms (Views: 284.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.self-1512985fd3d7fdc87008e8a802fe8c2535ea547f1befe42fe5572dfcd41868f3.css?body=1" for ::1 at 2015-06-02 11:13:23 +0800
+
+
+Started GET "/assets/time_entries.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-02 11:13:23 +0800
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-02 11:13:24 +0800
+
+
+Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" for ::1 at 2015-06-02 11:13:24 +0800
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-02 11:13:24 +0800
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-02 11:13:24 +0800
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-02 11:13:24 +0800
+
+
+Started GET "/assets/user_settings.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-02 11:13:24 +0800
+
+
+Started GET "/assets/time_entries.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-02 11:13:24 +0800
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-02 11:13:24 +0800
+
+
+Started GET "/assets/user_settings.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-02 11:13:24 +0800
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-02 11:13:24 +0800
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 11:15:43 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+ngVHxXYShRR+yK95SYSe72Ldu/sqcTnGVFBiwyR9y+uBF/2H3SAPwDSyy0/Kl/3W7WyctV8HJ2cIpad05zXtw=="}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 12  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 72ms (ActiveRecord: 24.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:15:43 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 248ms (Views: 244.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 11:15:46 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 407ms (Views: 328.1ms | ActiveRecord: 27.6ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:15:57 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3lXRxtPAggtz61CGzc/lDjjbRbAXjkhX2F8ILSNVNpp84YCVJ88uWiXHqxnKjXWsO0ewNeFI9x0wmHdHAHKKYg==", "user"=>{"first_name"=>"21", "last_name"=>"21", "date_of_birth"=>"0023-12-31", "email"=>"21@21.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"ee", "domain"=>"ee"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '21@21.com' LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('21@21.com', '$2a$10$DJp4jAgKWJVBu2.AVRcSJehbbXWCdC6GNE6WmqAMfjmp7Z0Jcy/Zi', '21', '21', '0023-12-31', '2015-06-02 03:15:57.550399', '2015-06-02 03:15:57.550399')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `companies` (`name`, `domain`) VALUES ('ee', 'ee')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`user_id`, `company_id`) VALUES (13, 13)[0m
+  [1m[35m (72.0ms)[0m  COMMIT
+  [1m[36mCompanyUser Load (4.0ms)[0m  [1mSELECT  `company_users`.* FROM `company_users` WHERE `company_users`.`user_id` = 13  ORDER BY `company_users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE `company_users` SET `access_level` = 1, `first_name` = '21', `last_name` = '21' WHERE `company_users`.`id` = 23[0m
+  [1m[35m (48.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-06-02 03:15:57.722384', `current_sign_in_at` = '2015-06-02 03:15:57.722384', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 03:15:57.726383' WHERE `users`.`id` = 13
+  [1m[36m (52.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 584ms (ActiveRecord: 176.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:15:57 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 13  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 13[0m
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 244ms (Views: 236.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 11:20:43 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"eaHpZ9/pJ4fSpF+PQqc4UYXqx4t4ldXql3ENE17G0AbbFbg0K+aL1oSIpBBF5ajzhnYyDo5TaqB/tnJ5feFs/g=="}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 13  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (4.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms (ActiveRecord: 28.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:20:43 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 264ms (Views: 252.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 11:20:46 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 406ms (Views: 312.5ms | ActiveRecord: 46.9ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:21:02 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G5ELX/8E6hqwhIJLTs/ljzDb5UxNLSBPLq3QGX6rMYmnY8wMVf98Khy+rFMN4QdqxEAtf9KwQUovkC/aol9OCA==", "user"=>{"first_name"=>"22", "last_name"=>"22", "date_of_birth"=>"2321-12-31", "email"=>"22@22.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"ii", "domain"=>"ii"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+  [1m[36m (4.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '22@22.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 328ms
+
+NoMethodError (undefined method `update_attributes' for nil:NilClass):
+  app/controllers/registrations_controller.rb:30:in `create'
+
+
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (100.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (100.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (212.0ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:24:09 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tk+jtQXkiME4zUe9Hkf4UU3s71l6WOzv6KCN8WgQxXAKvWTmrx8e8ZT3aaVdaRq0uXcnauXFjerpnXIytOS68Q==", "user"=>{"first_name"=>"22", "last_name"=>"22", "date_of_birth"=>"2321-12-31", "email"=>"22@22.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"iii", "domain"=>"iii"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (4.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '22@22.com' LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('22@22.com', '$2a$10$yWIo1QH1vynxnowKLuP7OOi/X/dpccvfswAehyXxrNeBS/Lk6ncpO', '22', '22', '2321-12-31', '2015-06-02 03:24:10.147607', '2015-06-02 03:24:10.147607')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `companies` (`name`, `domain`) VALUES ('iii', 'iii')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`user_id`, `company_id`) VALUES (14, 14)[0m
+  [1m[35m (48.0ms)[0m  COMMIT
+  [1m[36mCompanyUser Load (0.0ms)[0m  [1mSELECT  `company_users`.* FROM `company_users` WHERE `company_users`.`user_id` = 14  ORDER BY `company_users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE `company_users` SET `access_level` = 1, `first_name` = '22', `last_name` = '22' WHERE `company_users`.`id` = 24[0m
+  [1m[35m (40.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-06-02 03:24:10.283637', `current_sign_in_at` = '2015-06-02 03:24:10.283637', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 03:24:10.291637' WHERE `users`.`id` = 14
+  [1m[36m (36.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 528ms (ActiveRecord: 128.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:24:10 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (4.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 14  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 14[0m
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 236ms (Views: 228.0ms | ActiveRecord: 8.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 11:24:16 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"2IKNq/+ZtiN55qNqTAovc+m9a3kf+taYE1ediCN2tyFkcEr4VWIgE9XcjXIPJM2WHSajSoBnt50SamJL/4LIoA=="}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 14  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:24:16 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 280ms (Views: 276.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 11:24:18 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 313ms (Views: 312.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:24:30 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aMbO3pNsXJ2zlI+bXvDF0YdvbeC/StARZ1Gp8GrVJgDHlvJfjyU5XFccRZpFkXxplKs3wVKmRh18hQLc3LSf/Q==", "user"=>{"first_name"=>"23", "last_name"=>"23", "date_of_birth"=>"0231-12-31", "email"=>"23@23.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"iiii", "domain"=>"iiii"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (4.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '23@23.com' LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('23@23.com', '$2a$10$AVvsLKw4wDlREJXIA/I.PO993FFkp7c6ViAt2wfqZ0836YLzRdMlW', '23', '23', '0231-12-31', '2015-06-02 03:24:30.443031', '2015-06-02 03:24:30.443031')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `companies` (`name`, `domain`) VALUES ('iiii', 'iiii')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`user_id`, `company_id`) VALUES (15, 15)[0m
+  [1m[35m (60.0ms)[0m  COMMIT
+  [1m[36mCompanyUser Load (0.0ms)[0m  [1mSELECT  `company_users`.* FROM `company_users` WHERE `company_users`.`user_id` = 15  ORDER BY `company_users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE `company_users` SET `access_level` = 1, `first_name` = '23', `last_name` = '23' WHERE `company_users`.`id` = 25[0m
+  [1m[35m (52.1ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-06-02 03:24:30.595094', `current_sign_in_at` = '2015-06-02 03:24:30.595094', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 03:24:30.603044' WHERE `users`.`id` = 15
+  [1m[36m (40.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 544ms (ActiveRecord: 156.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:24:30 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 15  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 15[0m
+  Rendered users/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 228ms (Views: 216.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-02 11:24:32 +0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+YX6TCELlvSHgUnvdPO+6ldlIttN1y2wCDL2ekvRC19W1cbNPULzNWMJg+5vkgdSRKF4+qA7u7wT5l1W/bCyog=="}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 15  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:24:32 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 272ms (Views: 268.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-02 11:24:36 +0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 256ms (Views: 251.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2015-06-02 11:24:56 +0800
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pvZBt4356F0H9K8l2bctpTuVoACcgYnpr74mlteL3HoQte3YnP+lDjiw/2lMGfh8/MQO3IdzBW6cUwJfU3T58w==", "user"=>{"first_name"=>"24", "last_name"=>"24", "date_of_birth"=>"0231-12-31", "email"=>"24@24.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "companies_attributes"=>{"0"=>{"name"=>"ii", "domain"=>"ii"}}}, "commit"=>"Sign up"}
+  [1m[35mCompany Load (0.0ms)[0m  SELECT  `companies`.* FROM `companies` WHERE `companies`.`domain` IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.0ms)[0m  SELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY '24@24.com' LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `users` (`email`, `encrypted_password`, `first_name`, `last_name`, `date_of_birth`, `created_at`, `updated_at`) VALUES ('24@24.com', '$2a$10$az.H6Cict6D9T6m5m8SQnuZeIml.FT0Gg2o7vaGZ9u7BLlgBuTfWO', '24', '24', '0231-12-31', '2015-06-02 03:24:56.635400', '2015-06-02 03:24:56.635400')[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO `companies` (`name`, `domain`) VALUES ('ii', 'ii')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO `company_users` (`user_id`, `company_id`) VALUES (16, 16)[0m
+  [1m[35m (48.1ms)[0m  COMMIT
+  [1m[36mCompanyUser Load (0.0ms)[0m  [1mSELECT  `company_users`.* FROM `company_users` WHERE `company_users`.`user_id` = 16  ORDER BY `company_users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE `company_users` SET `access_level` = 1, `first_name` = '24', `last_name` = '24' WHERE `company_users`.`id` = 26[0m
+  [1m[35m (36.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.0ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2015-06-02 03:24:56.763431', `current_sign_in_at` = '2015-06-02 03:24:56.763431', `last_sign_in_ip` = '::1', `current_sign_in_ip` = '::1', `sign_in_count` = 1, `updated_at` = '2015-06-02 03:24:56.771409' WHERE `users`.`id` = 16
+  [1m[36m (44.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 516ms (ActiveRecord: 132.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-02 11:24:56 +0800
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 16  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 16[0m
+  Rendered users/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 336ms (Views: 324.0ms | ActiveRecord: 4.0ms)
