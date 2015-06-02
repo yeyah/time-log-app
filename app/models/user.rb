@@ -8,18 +8,19 @@ class User < ActiveRecord::Base
 	has_many :company_users, autosave: false
 	has_many :companies, through: :company_users
 
-	accepts_nested_attributes_for :companies,:company_users
+	#accepts_nested_attributes_for :companies,:company_users
 
-	# before_create:check_if_company_exists
+	 #before_create:check_if_company_exists
 
 
-	def check_if_company_exists (domain)
+	def check_if_company_exists (company_att)
 
-		# company = self.companies.first
-		# puts company.domain
-		company = Company.find_by_domain(domain)
-		
-		if company.present?
+		company = Company.find_or_create_by(domain: company_att[:domain])
+		return company
+	end
+
+	def check_what_access_level (company_users)
+		if company_users.count > 0
 
 			puts = "----------------------------------------------"
 			puts " Domain already exists "
@@ -33,7 +34,7 @@ class User < ActiveRecord::Base
 		end
 
 		return access_level
-		# self.company_users.build(access_level: access_level, user_id: self.id, company_id: company.id, first_name: self.first_name, last_name: self.last_name)
 	end
+
 
 end
